@@ -124,9 +124,30 @@ describe("About Applying What We Have Learnt", function() {
     expect(greatestPrimeFactor(13195)).toBe(29);
   });
 
-  // it("should solve Euler Problem 4: find the largest palindrome made from the product of two 3 digit numbers", function () {
+  it("should solve Euler Problem 4: find the largest palindrome made from the product of two 3 digit numbers", function () {
+    // TIME EXPENSIVE APPROACH...
+    function isPalindrome(num) {
+      return num.toString() === num.toString().split('').reverse().join('');
+    }
+    function greatestPalFrom3DigitFactors() {
+      var factors = _.range(999, 99, -1);
+      var product;
+      var palindromes = [];
+      
+      for (var i = 0; i < factors.length; i++) {
+        for (var k = i; k < factors.length; k++) {
+          product = factors[i] * factors[k];
+
+          if (isPalindrome(product)) {
+            palindromes.push(product);
+          }
+        }
+      }
+      return _(palindromes).reduce(function(max, val) { return val > max ? val : max });
+    }
     
-  // });
+    expect(greatestPalFrom3DigitFactors()).toBe(906609);
+  });
 
   it("should solve Euler Problem 5: find the smallest number divisible by each of the numbers 1 to 20", function () {
     var factors = _.range(1, 11);
