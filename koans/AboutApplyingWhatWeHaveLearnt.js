@@ -102,26 +102,46 @@ describe("About Applying What We Have Learnt", function() {
 
   /*********************************************************************************/
   /* UNCOMMENT FOR EXTRA CREDIT */
-  /*
-  it("should find the largest prime factor of a composite number", function () {
   
-  });
+  // it("should find the largest prime factor of a composite number", function () {
+  
+  // });
 
-  it("should find the largest palindrome made from the product of two 3 digit numbers", function () {
+  // it("should find the largest palindrome made from the product of two 3 digit numbers", function () {
     
-  });
+  // });
 
   it("should find the smallest number divisible by each of the numbers 1 to 20", function () {
-      
+    var factors = _.range(1, 21);
+    var result;
+
+    for (var x = 20; result === undefined; x += 20) {
+      if (_.every(factors, function(factor) {
+        return x % factor === 0;
+      })) {
+        result = x;
+      }
+    }
     
+    expect(result).toBe(232792560);
   });
 
   it("should find the difference between the sum of the squares and the square of the sums", function () {
-    
+    function diffSumSqSqSum(limit) {
+      var nums = _.range(1, limit + 1);
+      var squareOfSums = Math.pow(_(nums).reduce(function(acc, val) { return acc + val }, 0), 2);
+      var sumOfSquares = _(nums).chain()
+                          .map(function(num) { return num ** 2 })
+                          .reduce(function(acc, val) { return acc + val }, 0)
+                          .value();
+      return squareOfSums - sumOfSquares;
+    }
+
+    expect(diffSumSqSqSum(100)).toBe(25164150);
   });
 
-  it("should find the 10001st prime", function () {
+  // it("should find the 10001st prime", function () {
 
-  });
-  */
+  // });
+  
 });
