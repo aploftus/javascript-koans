@@ -178,8 +178,28 @@ describe("About Applying What We Have Learnt", function() {
     expect(diffSumSqSqSum(10)).toBe(2640);
   });
 
-  // it("should solve Euler Problem 7: find the 10001st prime", function () {
-
-  // });
+  it("should solve Euler Problem 7: find the 10001st prime", function () {
+    function isPrime(num) {
+      for (var x = 2; x < num; x++) {
+        if (num % x === 0) {
+          return false;
+        }
+        
+      }
+      return true;
+    }
+    function findNthPrime(n) {
+      var count = 0;
+      var prime
+      for (var x = 2; count !== n; x++) {
+        if (isPrime(x)) {
+          prime = x;
+          count += 1;
+        }
+      }
+      return prime;
+    }
+    expect(findNthPrime(10001)).toBe(104743);
+  });
   
 });
